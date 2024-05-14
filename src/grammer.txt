@@ -1,0 +1,53 @@
+//pc == process counter
+//RISC V set
+//Control and Status Registers (CSRs)
+
+⏳☝💨 -> 0000 0000 //LUI (load upper immediate) i glab ane Const's ?
+➕☝💨💻 -> 0000 0001 //AUIPC (add upper immediate to pc) is used to build pc-relative addresses and uses the U-type
+🦘 -> 0000 0010 //JAL Unconditional Jumps JAL stores the address of the instruction following the jump (pc+4) into register rd.
+🦘🔗 -> 0000 0011 //JALR (jump and link register)
+🌳🙆‍♂️ -> 0000 0100 //BEQ (Conditional Branches) Branch instructions compare two registers. are equal
+🌳🙅‍♂️ -> 0000 0101 //BNE not equal
+🌳🤏🖋️ -> 0000 0110 //BLS less than singnd
+🌳💁‍♂️🖋️ -> 0000 0111 //BGE greater than signd
+🌳🤏🔏 -> 0000 1000 //BLSU less than unsignd
+🌳💁‍♂️🔏 -> 0000 1001 //BGEU greater than unsignde
+⏳👾🖋️ -> 0000 1010 //LB loads an 8 bit val sign-extends this to XLEN
+⏳👾👾🖋️ -> 0000 1011 //LH loads an 16 bit val sign-extends this to XLEN
+⏳👾👾👾👾🖋️ -> 0000 1100 //LW loads an 32 bit val sign-extends this to XLEN
+⏳👾🔏 -> 0000 1101 //LBU loads an 8 bit val 0-extends this to XLEN
+⏳👾👾🔏 -> 0000 1110 //LHU loads an 16 bit val 0-extends this to XLEN
+🏪👾 -> 0000 1111 //SB Stores an 8 bit val from the low bits of register rs2 to memory.
+🏪👾👾 -> 0001 0000 //SH Stores an 16 bit val from the low bits of register rs2 to memory.
+🏪👾👾👾👾 -> 0001 0001 //SW Stores an 32 bit val from the low bits of register rs2 to memory.
+➕💨 -> 0001 0010 // ADDI adds the sign-extended 12-bit immediate to register rs1
+🪑🤏💨 -> 0001 0011 //SLTI Place the value 1 in register rd if register rs1 is less than the signextended immediate else 0
+🪑🤏💨🔏 -> 0001 0100 //SLTIU Place the value 1 in register rd if register rs1 is less than the signextended immediate else 0 unsignd
+🦻💨 -> 0001 0101 //XORI
+👂💨 -> 0001 0110 //ORI
+🤗💨 -> 0001 0111 //ANDI
+👈💨 -> 0001 1000 // SLLI Performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
+👉💨 -> 0001 1001 // SRLI Performs logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
+👉🧮💨 -> 0001 1010 // SRAI Performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
+➕ -> 0001 1011 //ADD
+➖ -> 0001 1100 //SUB
+👈 -> 0001 1101 //SLL Performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.
+🪑🤏 -> 0001 1110 //SLT Place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as signed numbers, else 0 is written to rd.
+🪑🤏🔏 -> 0001 1111 //SLTU Place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as unsigned numbers, else 0 is written to rd.
+🦻 -> 0010 0000 //XOR
+👉 -> 0010 0001 //SRL Logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2
+👉🧮 -> 0010 0010 //SRA Performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2
+👂 -> 0010 0011 //OR
+🤗 -> 0010 0100 //AND
+🚧 -> 0010 0101 //FENCE Used to order device I/O and memory accesses as viewed by other RISC-V harts and external devices or coprocessors.
+🚧ℹ️ -> 0010 0110 //FENCE.I Provides explicit synchronization between writes to instruction memory and instruction fetches on the same hart (HARdware Thread).
+⏸ -> 0010 0111 //PAUSE
+✋ -> 0010 1000 //PAUSE
+📞 -> 0010 1001 //ECALL - enviorment call exeptions
+⏹ -> 0010 1010 //EBREAK - Stops execution SOFORT
+☢️📰✍️ -> 0010 1011 //CSRRW atomic read/write CSR. Atomically swaps values in the CSRs and integer registers. CSRRW reads the old value of the CSR, zero-extends the value to XLEN bits, then writes it to integer register rd.
+🪑📰 -> 0010 1011 //CSRRS Reads the value of the CSR, zero-extends the value to XLEN bits, and writes it to integer register rd. The initial value in integer register rs1 is treated as a bit mask that specifies bit positions to be set in the CSR.
+🧼📰 -> 0010 1011 //CSRRC Reads the value of the CSR, zero-extends the value to XLEN bits, and writes it to integer register rd. The initial value in integer register rs1 is treated as a bit mask that specifies bit positions to be cleared in the CSR.
+☢️📰✍️💨 -> 0010 1111 //CSRRWI .
+🪑📰💨 -> 0011 0001 //CSRRSI  
+🧼📰💨 -> 0011 0010 //CSRRCI  
